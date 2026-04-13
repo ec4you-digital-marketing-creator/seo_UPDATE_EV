@@ -57,7 +57,7 @@ export default function AboutUs() {
                             <span className="text-[13px] font-bold tracking-[0.2em] uppercase text-[#84cc16]">
                                 About Us
                             </span>
-                            <div className="w-12 h-px bg-[#84cc16]/50" />
+
                         </div>
 
                         <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.05] mb-8 tracking-tight">

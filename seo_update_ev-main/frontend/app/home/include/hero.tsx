@@ -1,8 +1,26 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FiZap, FiMapPin, FiUsers, FiCpu, FiTarget, FiHeadphones } from "react-icons/fi";
 
-
+const newsItems = [
+  {
+    title: "Relux Electric raises ₹250 Cr to expand highway hyper-charging",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072&auto=format&fit=crop",
+  },
+  {
+    title: "Relux joins TNEB ELCOT to deploy 300+ stations across Tamil Nadu",
+    image: "https://images.unsplash.com/photo-1601362840469-51e4d8d59085?q=80&w=2070&auto=format&fit=crop",
+  },
+  {
+    title: "Introducing Super Hub 2.0: The world's first 480kW rapid charger",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072&auto=format&fit=crop",
+  },
+  {
+    title: "Relux Electric wins 'Best Green Tech Startup' at Global EV Expo",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072&auto=format&fit=crop",
+  },
+];
 
 export default function HomeHero() {
   return (
@@ -10,9 +28,10 @@ export default function HomeHero() {
 
       {/* Background Image */}
       <div
-        className="absolute inset-0 w-full h-full bg-cover bg-[position:82%_center] md:bg-[position:95%_center] bg-no-repeat opacity-80"
+        className="absolute inset-0 w-full h-full bg-cover bg-position-[82%_center] md:bg-position-[95%_center] bg-no-repeat opacity-80"
         style={{ backgroundImage: "url('/images/relux-electric-tamilnadu-banner.png')" }}
       />
+
       {/* ── Hero Content Card — top left ── */}
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-end md:justify-start pt-10 md:pt-56 pb-16 md:pb-0">
 
@@ -43,9 +62,45 @@ export default function HomeHero() {
             </div>
           </div>
         </div>
+        {/* ── News Marquee — Bottom Right Section ── */}
+        <div className="absolute bottom-6 right-0 w-full z-20 overflow-hidden flex justify-end">
+          <div className="w-full max-w-[1200px] px-4">
+            <div className="relative flex items-center bg-white/3 backdrop-blur-2xl border border-white/10 rounded-2xl overflow-hidden py-3 px-6 h-16 group/marquee">
+              
+              {/* Label */}
+              <div className="flex items-center gap-2 mr-8 shrink-0 relative z-10 bg-[#050505]/20 backdrop-blur-md px-3 py-1 rounded-lg border border-white/5">
+                <div className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00b14f] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#00b14f]"></span>
+                </div>
+                <span className="text-white/60 text-[10px] uppercase tracking-[0.2em] font-bold whitespace-nowrap">Latest News</span>
+              </div>
+
+              {/* Scrolling Content */}
+              <div className="flex gap-12 animate-marquee whitespace-nowrap group-hover/marquee:pause cursor-default">
+                {[...newsItems, ...newsItems].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-4 group/item">
+                    <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0 border border-white/10">
+                      <Image 
+                        src={item.image} 
+                        alt={item.title} 
+                        fill 
+                        className="object-cover transition-transform duration-500 group-hover/item:scale-110"
+                      />
+                    </div>
+                    <span className="text-white/80 text-sm font-medium hover:text-[#00b14f] transition-colors">
+                      {item.title}
+                    </span>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white/10 mx-2" />
+                  </div>
+                ))}
+              </div>
+
+            </div>
+          </div>
+        </div>
 
       </div>
-
 
     </section>
   );
